@@ -1,0 +1,18 @@
+# --- Jitsa's Ignore List ---
+
+# 1. System Files
+.DS_Store
+__pycache__/
+*.pyc
+
+# 2. Virtual Environment (Too big)
+venv/
+tb-env/
+
+# 3. Dataset (Too big)
+dataset/
+
+# 4. Source Code (Private)
+train_model.py
+test_model.py
+check_data.py
