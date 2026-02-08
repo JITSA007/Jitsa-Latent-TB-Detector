@@ -48,7 +48,7 @@ To run this project on your own machine:
 
 1.  **Clone the Repository**
     ```bash
-    git clone [https://github.com/YOUR_USERNAME/Jitsa-Latent-TB-Detector.git](https://github.com/YOUR_USERNAME/Jitsa-Latent-TB-Detector.git)
+    git clone [https://github.com/JITSA007/Jitsa-Latent-TB-Detector.git](https://github.com/YOUR_USERNAME/Jitsa-Latent-TB-Detector.git)
     cd Jitsa-Latent-TB-Detector
     ```
 
