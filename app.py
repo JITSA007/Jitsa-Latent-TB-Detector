@@ -110,13 +110,23 @@ with col2:
                 # Load & Preprocess
                 model = load_model()
                 size = (180, 180)
+                
+                # Resize the image to match model input
                 image_ops = ImageOps.fit(image, size, Image.Resampling.LANCZOS)
-                img_array = np.asarray(image_ops).astype(np.float32)
                 
-                if len(img_array.shape) == 2:
-                     img_array = np.stack((img_array,)*3, axis=-1)
+                # --- FIX: Convert to RGB (3 channels) ---
+                # This fixes the crash with PNGs (removes alpha) and Grayscale (adds channels)
+                image_rgb = image_ops.convert('RGB')
                 
+                # Convert to numpy array
+                img_array = np.asarray(image_rgb).astype(np.float32)
+                
+                # --- NORMALIZATION: Scale values to 0-1 range (Critical for Accuracy) ---
+                img_array = img_array / 255.0
+                
+                # Add batch dimension (1, 180, 180, 3)
                 img_array = np.expand_dims(img_array, axis=0)
+                
                 prediction = model.predict(img_array)
                 score = tf.nn.softmax(prediction[0])
                 
